@@ -21,6 +21,10 @@ console_command = 'php /var/www/html/artisan tinker'
   LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
+  DB_HOST = "postgresql://sendnotes-postgresdb.flycast"
+  DB_DATABASE= "sendnotes-postgresdb" 
+  DB_PORT = 5432
+
 
 [http_service]
   internal_port = 8080
@@ -29,6 +33,9 @@ console_command = 'php /var/www/html/artisan tinker'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
+
+[deploy]
+  release_command = "php /var/www/html/artisan migrate --force"
 
 [[vm]]
   memory = '1gb'
